@@ -1,0 +1,17 @@
+all classes in kotlin is NON inheritance
+
+sealed is used for a class not be inheritance
+
+
+//Super class,parent class,base class
+
+
+//sub class, derived class,child class
+
+
+//Any Class inherites from the Any class
+
+
+//to use override you have to use open
+
+//polymorphism is object usage and change the properties
