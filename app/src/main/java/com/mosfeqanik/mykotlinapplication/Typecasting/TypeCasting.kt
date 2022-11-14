@@ -26,4 +26,24 @@ fun main() {
         }
     }
 
+    //SMART CAST
+    val obj1: Any = "I have a Dream"
+    if (obj1 !is String) {
+        println("Not a string")
+    } else {
+        println("String is ${obj1}")
+        println("Found a String of length ${obj1.length}")
+    }
+
+    val str1: String = obj1 as String
+    println(str1.length)
+
+//    val obj2: Any = 1337
+//    val str2: String = obj2 as String
+//    println(str2)
+
+    val obj3: Any = 1337
+    val str3: String? = obj3 as? String
+    println(str3)
+
 }
