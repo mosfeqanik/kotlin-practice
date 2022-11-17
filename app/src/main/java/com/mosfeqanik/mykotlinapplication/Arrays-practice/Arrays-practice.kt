@@ -34,7 +34,7 @@ fun main() {
 
     }
     for (index in fruits.indices) {
-        println("${fruits[index].name}is in index $index")
+        println("${fruits[index].name} is in index $index")
     }
 
 }
