@@ -17,8 +17,8 @@ fun main() {
     println("User Details : $updatedUser")
     updatedUser = user1.copy(name = "Denis Panu")
     println("User Details : $updatedUser")
-    println("User Details1 : ${updatedUser.component1()}")
-    println("User Details2 : ${updatedUser.component2()}")
+    println("User Details part 1 : ${updatedUser.component1()}")
+    println("User Details part 2 : ${updatedUser.component2()}")
 
     val (id, name) = updatedUser
     println("updated user id is ${id}")
