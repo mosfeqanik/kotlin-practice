@@ -1,0 +1,812 @@
+#+title: Learning Kotlin.
+#+author: Shafiqur Rhaman
+#+options: h:1 num:nil toc:nil
+
+* Build command for ~kotlin~ code compile and Execute.
+  - Install ~OpenJdk~ from apt
+  - Download Kotlin compiler from ~github~
+  - Then add bin folder path to ~.bashrc~
+  - compile command
+    #+BEGIN_SRC bash
+      kotlinc basic-operation.kt -include-runtime -d basi-opration.jar
+      java -jar basi-opration.jar
+    #+END_SRC
+* Five Basic Concepts are
+** Variables and Types
+   - A variable is a location in memory (storage).
+   - To indicate the storage area, each variable should be given a
+     unique name (Identifier).
+** Control Flows
+   - Do something conditionally
+   - To repeatedly run code conditionally.
+** Functions
+   - Functions enable us to separate code.
+   - Run code blocks when needed.
+** Collections
+   - Collections enable us to store multiple elements in one place.
+   - Iterate through multiple elements (with the help of control
+     flows).
+** Classes and Objects (including inheritance)
+   - Create our own data types
+   - Keep the data members and methods together in one place.
+   - Write more readable and maintainable code.
+   - Work better in a team.
+* Variables and Data Types
+  - There is two types of variables in ~kotlin~
+    - Mutable
+      #+begin_src kotlin
+	var aquarium = 1
+	aquarium = 50
+      #+end_src
+
+    - Immutable 
+      #+begin_src kotlin
+	val fish = "Nemo"
+      #+end_src
+
+  - Immutable list can not reassign new value but can be manipulate
+    list.
+    #+begin_src kotlin
+      val myList = mutalbleListOf("tuna", "salmon", "shark")
+      myList.remove("shark")
+    #+end_src
+
+  - Byte
+    #+begin_src kotlin
+      val myByte: Byte = 13
+    #+end_src
+
+  - Short
+    #+begin_src kotlin
+      val myShort: Short = 125
+    #+end_src
+
+  - Int
+    #+begin_src kotlin
+      val myInt: Int = 12345678
+    #+end_src
+
+  - Long
+    #+begin_src kotlin
+      val myLong: Long = 12_123_123_123_1234
+    #+end_src
+
+  - Float
+    #+begin_src kotlin
+      val myFloar: Float = 13.43F
+    #+end_src
+
+  - Double
+    #+begin_src kotlin
+      val myDouble: Double = 3.1233445535445
+    #+end_src
+
+  - Boolean
+    #+begin_src kotlin
+      val myBoolean: Boolean = true
+    #+end_src
+
+  - Char
+    #+begin_src kotlin
+      val myChar: Char = 'A'
+    #+end_src
+
+  - String
+    #+begin_src kotlin
+      val myString: String = "Shafiqur Rahman"
+    #+end_src
+* Arithmetic Operators 
+  - (+, -, /, *, %)
+  - int divide by int returns int
+  - float divide by float returns float
+    #+begin_src kotlin
+      1/2 // Will return 0
+      1.0/20. // Will return 0.5
+    #+end_src
+  - Arithmetic Methods
+    #+begin_src kotlin
+      val fish = 2
+      fish.times(6)
+      fish.div(10)
+      fish.plus(3)
+      fish.minus(3)
+    #+end_src
+  - Boxing
+    #+begin_src kotlin
+      1.toLong()
+
+      val boxed: Number = 1
+      boxed.toLong()
+    #+end_src
+* Comparison Operators
+  - ~(==, !=, <, >, <=, >=)~
+
+* Null Safety
+  - Add ~?~ to indicate variable can contain null value
+    #+begin_src kotlin
+      var marble: Int? = null
+      var lotsOfFish: List<String?> = listOf(null, null)
+      var evenMoreFish: List<String>? = null
+      var definitelyFish: List<String?>? = null
+    #+end_src
+  - Force a null able type in ~kotlin~
+    #+begin_src kotlin
+      goldfish!!.eat()
+    #+end_src
+  - Null check operator ~?:~ Elvis Operator
+    #+begin_src kotlin
+      return fishFoodTreats?.dec() ?: 0
+    #+end_src
+  - Safe Call Operator ~?.let~
+    #+begin_src kotlin
+      var nullableName: String? = "Pallab"
+
+      nullableName?.let { println(it.length) }
+    #+end_src
+  - Chain Null check
+    #+begin_src kotlin
+      val age: String? = user?.wife?.age ?: 0
+    #+end_src
+* Switch with When
+  #+begin_src kotlin
+    var welcomeMessage = "Hello and welcome to Kotlin"
+    when (welcomeMessage.length) {
+       0, 1 -> println("Nothing to say?")
+       in 2..50 -> println("Perfect")
+       else -> println("Too long!")
+    }
+  #+end_src
+* Array (Collections)
+  - Typed Array
+    #+begin_src kotlin
+      // IntArray
+      val numbers = intArrayOf(1, 2, 3)
+      // BooleanArray
+      // DoubleArray
+      // ByteArray
+      // LongArray
+      // ShortArray
+      // FloatArray
+    #+end_src
+
+  - Non Typed Array
+    #+begin_src kotlin
+      // arrayOf<String>
+      val school = arrayOf("tuna", "salmon", "shark")
+      println(Arrays.toString(school))
+      // arrayOf<Fruit>
+      val colects = array(1, 2, "Jhon", "Doe", 0.5, Fruit())
+    #+end_src
+
+  - Arrays of arrays
+    #+begin_src kotlin
+
+      var fish = 12
+      var plants = 5
+
+      val swam = listOf(fish, plants)
+
+      val bigSwarm = arrayOf(swam, arrayOf("Dolphin", "Whale", "orka"))
+
+
+      println(Arrays.toString(bigSwarm))
+    #+end_src
+
+  - Array comprehension
+    #+begin_src kotlin
+      val array = Array(5) { it * 2 }
+      println(array.asList())
+    #+end_src
+
+  - Array of data class
+    #+begin_src kotlin
+      data class Fruit(val name: String, val price: Double)
+
+      val fruits = arrayOf(Fruit("Apple", 2.5), Fruit("Grape", 3.5))
+
+      for (fruit in fruits){
+	  println("${fruit.name}")
+      }
+
+      for(index in fruits.indices){
+	  println("${fruits[index].name} is in index $index")
+      }
+    #+end_src
+
+* Array List
+  - Array List are used to create a dynamic array. Which means the
+    size of an array can be increased or decreased according to
+    requirement.
+  - The Array List class provide both read and write functionality
+  - The Array List follows the sequence of insertion order.
+  - An array is non synchronized and it may contain duplicate element.
+  - ~ArrayList<E>():~ Is used to create an empty Array List.
+  - ~ArrayList(capacity: Int):~ Is used to create an Array List of
+    specified capacity.
+  - ~ArrayList(elements: Collection<E>):~ Is used to create an Array
+    List filled with the elements of a collection.
+  - ~open fun add(element: E): Boolean~ -> used to add the specific
+    element into the collection.
+  - ~open fun clear()~ -> used to remove all elements from the collection.
+  - ~open fun get(index: Int): E~ -> used to return the element at
+    specific index in the list.
+  - ~open fun remove(element: E): Boolean~ -> used to remove a single
+    instance of the specific element from current collection, if it is
+    available.
+  - Empty Array List 
+    #+begin_src kotlin
+      fun main() {
+	  val arrayList = ArrayList<String>()
+
+	  arrayList.add("One")
+	  arrayList.add("Two")
+
+	  for(i in arrayList){
+	      println(i)
+	  }
+      }
+    #+end_src
+  - Array List using collection
+    #+begin_src kotlin
+      fun main() {
+	  val arrayList: ArrayList<String> = ArrayList<String>(5)
+	  var list: MutableList<String> = mutableListOf<String>()
+
+	  list.add("One")
+	  list.add("Two")
+
+	  arrayList.addAll(list)
+
+	  val itr = arrayList.iterator()
+
+	  while (itr.hasNext()) {
+	      println(itr.next())
+	  }
+
+	  println("Size of array list = ${arrayList.size}")
+    
+      }
+    #+end_src
+  - Array List get 
+    #+begin_src kotlin
+      fun main() {
+	  val arrayList: ArrayList<String> = ArrayList<String>()
+
+	  arrayList.add("One")
+	  arrayList.add("Two")
+
+	  for (i in arrayList) {
+	      println(i)
+	  }
+
+	  println(arrayList.get(1))
+      }
+    #+end_src
+* List (Collections)
+  #+begin_src kotlin
+    // List of Strings
+    val stringList: List<String> = listOf(
+	"Denish", "Frank", "Michael", "Greater"
+    )
+    // List of Mixed Type
+    val mixedTypeList: List<Any> = listOf(
+	"Denish", 31, 5, "Bday", 70.5, "KG"
+    )
+
+    val months = listOf("January", "February", "March")
+
+
+    val additionalMonths = months.toMutableList()
+    val newMonths = arrayOf("April", "May", "June")
+    additionalMonths.addAll(newMonths)
+    additionalMonths.add("July")
+
+    print(additionalMonths)
+
+
+    val days = mutableListOf<String>("Saturday", "Sunday", "Monday")
+
+    print(day)
+  #+end_src
+
+* Map (Collections)
+  #+begin_src kotlin
+    val fruits = setOf("Orange", "Apple", "Mango", "Apple", "Grape", "Orange")
+    print(fruits.size)
+
+    // mapOf key, value
+
+    val daysOfTheWeek = mapOf(1 to "Monday", 2 to "Tuesday", 3 to "Wednesday")
+
+    for(key in daysOfTheWeek.keys){
+	println("$key is to ${daysOfTheWeek[key]}")
+    }
+
+    data class Fruit(val name: String, val price: Double)
+
+    val fruitsMap = mapOf(
+	"Favorite" to Fruit("Mango", 2.5),
+	"Okay" to Fruit("Apple", 1.0)
+    )
+  #+end_src
+
+* For Loop
+  - looping without index
+    #+begin_src kotlin
+      for (element in swarm) println(element)
+    #+end_src
+  - looping with index
+    #+begin_src kotlin 
+      for ((index, element) in swarm.withIndex()){
+	  println("Fish at $index is $element")
+      }
+    #+end_src
+  - Ranges print
+    #+begin_src kotlin
+      for (i in 'b'..'g') println(i)
+
+      for (i in 1..120) println(i)
+
+      for (i in 5 downTo 1) println(i)
+
+      for (i in 5 downTo 1 step 2) println(i)
+
+      for (i in 3..6 step 2) println(i)
+
+      for (i in 1 until 10) println(i)
+    #+end_src
+* For Each
+* While Loop
+  #+begin_src kotlin
+    var x = 1
+    while(x <= 10) {
+	println("$x")
+	x++
+    }
+    println("While loop is done.")
+  #+end_src
+* Do While Loop
+  #+begin_src kotlin
+    x = 15
+
+    do {
+	print("$x")
+	x++
+    } while(x <= 10)
+  #+end_src
+* Repeat Loop
+* Filter
+  - Eager Filter (Create a new list)
+    #+begin_src kotlin
+      val decorations = listOf(
+	  "rock", "pagoda", "plastic plant", "alligator", "flowerpot"
+      )
+      val eager = decorations.filter { it[0] == 'p'}
+      println(eager)
+    #+end_src
+
+  - Lazy Filter 
+    #+begin_src kotlin
+      val decorations = listOf(
+	  "rock", "pagoda", "plastic plant", "alligator", "flowerpot"
+      )
+      val filtered = decorations.asSequence().filter() { it[0] == 'p' }
+      println(filtered)
+      println(filtered.toList())
+    #+end_src
+* ~lambda~
+  - Lambda (Expression) is a function which has no name.
+
+  - Lambda expression and anonymous functions are 'function literals'
+    i.e. functions that are not declared, but passed immediately as an
+    expression.
+
+  - Lambda is defined with curly braces {} which takes variables as a
+    parameter (if any) and a body of a function.
+
+  - The body of a function is written after the variable (if any)
+    followed by ~->~ operator.
+
+  - Syntax : {variable(s) -> body_of_lambda}
+
+  - A value assigned at compile time, and the value never changes when
+    the variable is accessed.
+
+  - a lambda assigned at compile time, and the lambda is executed
+    every time the variable is referenced, returning a different
+    value.
+
+  - Example:
+    #+begin_src kotlin
+      val sum: (Int, Int) -> Int = { a: Int, b: Int -> a + b }
+      pritln(sum(10, 5))
+
+      // Even Shorter
+      val sum = { a: Int, b: Int -> println(a + b) }
+      sum(10, 15)
+    #+end_src
+
+* Classes 
+  - Simple way to create a class
+    #+begin_src kotlin
+      class Person constructor(_firstName: String, _lastName: String) {
+	  // Member Variable (Properties) of the class
+	  var firstName: String
+	  var lastName: String
+    
+	  // Initializer Blocks
+	  init {
+	      this.firstName = _firstName
+	      this.lastName = _lastName
+	      println("First Name: $firstName")
+	      println("Last Name: $lastName")
+	  }
+      }
+
+      fun main() {
+	  val pallab = Person("Pallab", "pal")
+	  println(pallab)
+      }
+    #+end_src
+  - More Simple way to create a class
+    #+BEGIN_SRC kotlin
+      class Person(_firstName: String, _lastName: String){
+	   // Member Variables (Properties) of the class
+	  var firstName: String = _firstName
+	  var lastName: String = _lastName
+ 
+	  // Initializer Block
+	  init {
+	      println("FirstName = $firstName and LastName = $lastName")
+	  }
+      }
+
+      fun main() {
+	  val pallab = Person("Pallab", "pal")
+	  println(pallab)
+      }
+    #+END_SRC
+  - Even more simple way to create a class
+    #+BEGIN_SRC kotlin
+      class Person(var firstName: String = "Jhon", var lastName: String = "Doe"){
+	  // Initializer Blocks
+	  init {
+	      println("First Name: $firstName")
+	      println("Last Name: $lastName")
+	  }
+      }
+
+      fun main() {
+	  val pallab = Person("Pallab", "pal")
+	  println(pallab)
+      }
+    #+END_SRC
+  - With Secondary Constructor
+    #+BEGIN_SRC kotlin
+      class Person (var firstName: String = "Shafiqur", var lastName: String = "Rahman"){
+	  var hobby: String = "Fishing"
+	  // This property is import for Secondary Constructor
+	  var age: Int? = null
+	  // This property is import for Secondary Overload Constructor
+	  var eyeColor: String? = null
+
+	  // Secondary Constructor
+	  constructor(firstName: String, lastName: String, age: Int): this(firstName, lastName){
+	      this.age = if (age > 0) age else throw IllegalArgumentException("Age must be greater than zero")
+	  }
+
+	  // Secondary Constructor Overloaded
+	  constructor(firstName: String, lastName: String, age: Int, eyeColor: String): 
+		  this(firstName, lastName, age)  {
+	      this.eyeColor = eyeColor
+	  }
+
+	  // Method
+	  fun sayHobby(){
+	      println("$firstName\'s Hobby is $hobby.")
+	  }
+      }
+
+
+      fun main() {
+	  var shafiq = Person()
+	  shafiq.sayHobby()
+	  var pallab = Person("Shafiq", "Pallab")
+	  pallab.sayHobby()
+	  var dia = Person("Habiba", "Akter", 20)
+	  dia.hobby = "Planting"
+	  dia.sayHobby()
+      }
+    #+END_SRC
+* Class Example
+  #+begin_src kotlin
+    class Aquarium (
+	var width: Int = 20,
+	var height: Int = 40,
+	var length: Int = 100
+    ) {
+	var volume: Int 
+	    get() = width * height * length / 1000
+	    set(value) { height = (value * 1000) / (width  * length) }
+
+	var water = volume * 0.9
+
+	// Member Secondary Constructor
+	constructor(numberOfFish: Int): this() {
+	    val water: Int = numberOfFish * 2000
+	    val tank: Double = water + (water * 0.1)
+	    height = (tank / (length * width)).toInt()
+	}
+
+	init {
+	    println("Length: $length")
+	    println("Width: $width")
+	    println("Height: $height")
+	}
+    }
+
+
+    fun main() {
+	val smallAquarium = Aquarium(numberOfFish = 9)
+	println("Volume: ${smallAquarium.volume}")
+    }
+  #+end_src
+* SETTERS AND ~GETTERS~ 
+  - Kotlin internally generates a default getter and setter for
+    mutable properties,
+  - ~Getter~ (only) for read-only properties.
+  - Example
+    #+BEGIN_SRC kotlin
+      class Car(_brand: String, _model: String, _maxSpeed: Int){
+	  val _brand: String = _brand
+	      get() = field
+
+	  var _model: String = _model
+	      get() = field
+	      set(value) {field = value}
+
+	  var _maxSpeed: Int = _maxSpeed
+	      get() = field
+	      set(value) {field = value}
+      }
+    #+END_SRC
+  - Backing Field (field)
+    #+BEGIN_SRC kotlin
+      class Car {
+	  lateinit var owner: String
+	  val myBrand: String = "BMW"
+	  // Custom Getter
+	      get() { return field.lowercase() }
+
+	  var myModel: String = "M5"
+	  // Default Setter and Getter
+	      private set
+
+
+	  var myMaxSpeed: Int = 40
+	      get() = field
+	  // Custom Setter
+	      set(value) {
+		  field = if(value > 0) value
+		  else throw IllegalArgumentException("_maxSpeed must be greater than zero")
+	      }
+
+	  init {
+	      this.owner = "Shafiq"
+	  }
+      }
+
+      fun main() {
+	  val myCar = Car()
+	  println(myCar.myBrand)
+	  println(myCar.myModel)
+	  myCar.myMaxSpeed = 100
+	  println(myCar.myMaxSpeed)
+      }
+    #+END_SRC
+* Package Visibility 
+  - public - Default Everywhere.
+  - private - File
+  - internal - Module
+* Class Visibility
+  - public - Default. Class and public member
+  - private - Inside class. Sub classes =can't= see.
+  - protected - Inside class. Sub classes can see.
+  - internal - Module
+  - In kotlin all classes are ~final~ by default, so they can't be
+    inherited by default.
+* Inheritance 
+  - We have to add ~open~ to class to make sub class from it.
+  - We have to add ~override~ to sub class to override properties or
+    methods.
+    #+begin_src kotlin
+      import kotlin.math.PI
+
+      open class BaseAquarium (
+	  var lenght: Int = 100,
+	  var width: Int = 20,
+	  var height: Int = 40
+      ){
+	  open var volume: Int
+	      get() = (width * height * lenght) / 1000
+	      set(value) { height = (value * 1000) / (width * lenght) }
+
+	  open var water = volume * 0.9
+
+	  constructor(numberOfFish: Int): this(){
+	      val water: Int = numberOfFish * 2000
+	      val tank: Double = water + (water * 0.1)
+	      height = (tank / (lenght * width)).toInt()
+	  }
+      }
+
+
+      class TowerTank(): BaseAquarium() {
+	  override var water = volume * 0.8
+
+	  override var volume: Int
+	      get() = ((width * height * lenght) / 1000 * PI).toInt() 
+	      set(value) { height = (value * 1000) / (width * lenght) }
+      }
+
+
+      fun main() {
+	  var myTowerTank = TowerTank()
+
+	  println("Volume of new tower tank aquarium ${myTowerTank.volume}")
+    
+      }
+
+    #+end_src
+* Abstract Class, Interface, Singleton Object
+  #+begin_src kotlin
+    fun main() {
+	delegate()
+    }
+
+    fun delegate(){
+	val pleco = Plecostomus()
+	println("Fish has color ${pleco.color}")
+	pleco.eat()
+    }
+
+    interface FishAction{
+	fun eat()
+    }
+
+    interface FishColor {
+	val color: String
+    }
+
+    class Plecostomus(fishColor: FishColor = GoldColor):
+	FishAction by PrintingFishAction("a lot of Food"),
+	FishColor by fishColor
+
+    
+    object GoldColor: FishColor {
+	override val color = "gold" 
+    }
+
+
+    object RedColor: FishColor {
+	override val color = "red" 
+    }
+
+
+    class PrintingFishAction(val food: String): FishAction {
+	override fun eat() {
+	    println(food)
+	}
+    }
+
+  #+end_src
+* Nested Class
+  - Nested class is such which is created inside another class.
+  - In kotlin, a nested class is by default static, so its data
+    members and member functions can be accessed without creating an
+    object of the class.
+  - Nested class can't access the data members of the outer classes.
+  - Example
+    #+begin_src kotlin
+      class OuterClass {
+	  private var name: String = "Mr. X"
+
+	  class NestedClass {
+	      var description: String = "Code inside the nested class"
+	      private var id: Int = 101
+
+	      fun foo(){
+		  println("Id is $id")
+	      }
+	  }
+      }
+
+      fun main() {
+	  println(OuterClass.NestedClass().description)
+
+	  var obj = OuterClass.NestedClass()
+
+	  obj.foo()
+      }
+    #+end_src
+* Inner Class
+  - An Inner Class is a class which is created inside another class
+    with key word ~inner~
+  - Inner class can't be declared inside interface or non-inner nested class
+  - It is able to access members of its outer class even it is private.
+  - Example
+    #+begin_src kotlin
+      class OuterClass {
+	  private var name: String = "Mr. X"
+
+	  class NestedClass {
+	      var description: String = "Code inside the nested class"
+	      private var id: Int = 101
+
+	      fun foo(){
+		  println("name is $name")
+		  println("Id is $id")
+	      }
+	  }
+      }
+
+      fun main() {
+	  println(OuterClass.NestedClass().description)
+
+	  var obj = OuterClass.NestedClass()
+
+	  obj.foo()
+      }
+
+    #+end_src
+* Safe cast operator ~as?~
+  #+begin_src kotlin
+    fun main() {
+	val location: Any = "Kotlin"
+	val safeString: String? = location as? String
+	val safeInt: Int? = location as? Int
+
+	println(safeString)
+	println(safeInt)
+    }
+  #+end_src
+* Unchecked Exceptions 
+  - This exception type extends the ~RuntimeException~ class.
+  - The unchecked exception is checked at run time.
+  - Example of unchecked exception
+    - ~ArithmeticException~: thrown when we divide a number by zero.
+    - ~ArrayIndexOutOfBoundException~: thrown when an array has been
+      tried to access with incorrect index value.
+    - ~SecurityException~: thrown by the security manager to indicate
+      a security violation.
+    - ~NullPointerException~: thrown when invoking a method or
+      property on a null object.
+* Exception Handling 
+  - ~Throwable~ Class
+    #+begin_src kotlin
+      throw MyExeption ("this throws an Exception")
+    #+end_src
+  - There are four different keywords used in exception
+    handling. These are:
+    - try : the try block contain a set of statements which might
+      generate an exception. It must be followed by either catch or
+      finally or both.
+    - catch : the catch block is used to catch the exception thrown
+      from try block.
+    - finally: finally block always execute whether exception is
+      handled or not. So it is used to execute important code
+      statements. 
+    - throw: throw an exception explicitly.
+  - Exception Example:
+    #+begin_src kotlin
+      fun main() {
+	  try{
+	
+	  } catch(e: Exception){
+
+	  } finally {
+	
+	  }
+      }
+    #+end_src
+
