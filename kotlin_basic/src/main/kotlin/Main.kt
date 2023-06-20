@@ -184,8 +184,17 @@ fun main(args: Array<String>) {
     //elvis operator  ?:
     print(r?.times(4)?:"Operand is Unassigned")
     r = 10
-    print(r.times(6))
+    println(r.times(6))
 
+
+    var i = 9
+    var sum = 10
+    do{
+        sum += 1
+        i++
+    }while(i <= 10)
+    println(sum)
+    for(i in 1..10) { if(i %2 == 0) print(i) }
 }
 
 fun printHello() {
@@ -218,3 +227,29 @@ fun add2NumberWithAction(a: Int, b: Int, action: (Int, Int) -> Int) {
     println(action(a, b))
 }
 //the body of the code calls the function that was passwed as the second argument and passes the first argument along to it.
+
+
+
+//Find the correct output for the following statements: var i = 9 var sum = 10 do{ sum += 1 i++ }while(i <= 10) print(sum)
+//12
+//If x > y and z > x, then
+//z is greater than y
+//Which keyword do you use to define a function in Kotlin?
+//var
+//Which syntax is correct for declaring a variable?
+// c) var x: String = “Hello”
+//Which keyword do you use to make a variable immutable?
+// a) val
+//Which operator does not belong to the Null Safety feature?
+//??
+//Which one is right?
+// a) Function arguments can be either named or default
+
+///---->You can assign default value for named arguments
+//Which one is a correct function signature?
+// d) fun something(String s) : String
+//Find the correct output for the following statements: for(i in 1..10) { if(i %2 == 0) print(i) }
+// b) 2,4,6,8,10
+
+//Which one is true?
+// b) To compare things, we use For Loop
