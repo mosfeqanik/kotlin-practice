@@ -1,255 +1,57 @@
-import java.lang.Exception
+//class object examples
+fun main( ) {
+    val s1 = Student()
+    println(s1.getFullName())
 
-fun main(args: Array<String>) {
-    var x: Int = 10
-    var population: Long = 23342234234234L
-    var y: Double = 10.5
-    var z: Float = 22.4f
-    var status: Boolean = false
-    var country: String = "Bangladesh"
-    var code: Char = 'A'
+    val t1 = Teacher()
+    println(t1.getFullName())
 
-    var firstName: String = "Mosfeq"
-    var lastName: String = "Anik"
+    val e1 = Employee(firstName = "anik", lastName = "mosfeq")
+    println(e1.getFullName())
 
-
-    println("$x")
-    println("my name is $firstName $lastName")
-    println("Hello World!")
-
-
-    val a: Int = 10
-    val b: Int = 10
-//    val sum:Int = a+b
-//    print("the sum of $x and $y is $sum")
-    println("the sum of $a and $b is ${a + b}")
-
-    val age1: Int = 29
-    val age2: Int = 30
-    println(age1 > age2)
-
-
-    val c: Int = 20
-    val d: Int = 30
-    if (c > d) {
-        println("$c is greater than $d")
-    } else if (c < d) {
-        println("$d is greater than $c")
-
-    } else {
-        println("$c is equal to $d")
-    }
-
-    val result: String = if (c > d) {
-        "$c is greater than $d"
-    } else if (c < d) {
-        "$d is greater than $c"
-
-    } else {
-        "$c is equal to $d"
-    }
-    println(result)
-
-    val mark = 94
-    val newresult = if (mark >= 40 && mark <= 49) {
-        "c-"
-    } else if (mark >= 50 && mark <= 59) {
-        "C+"
-    } else if (mark >= 60 && mark <= 69) {
-        "B-"
-    } else if (mark >= 70 && mark <= 79) {
-        "B+"
-    } else if (mark >= 80 && mark <= 89) {
-        "A-"
-    } else if (mark >= 90 && mark <= 100) {
-        "A+"
-    } else {
-        "fail"
-    }
-    val newresultRange = if (mark in 40..49) {
-        "c-"
-    } else if (mark in 50..59) {
-        "C+"
-    } else if (mark in 60..69) {
-        "B-"
-    } else if (mark in 70..79) {
-        "B+"
-    } else if (mark in 80..89) {
-        "A-"
-    } else if (mark in 90..100) {
-        "A+"
-    } else {
-        "fail"
-    }
-    println(newresult)
-
-//    when(whenresults){
-//        0-> println("No results")
-//        in  1..39 -> println("Got results")
-//        else -> println("Thats a lot of results!")
-//    }
-
-    val whenUsageResult = when (mark) {
-        in 40..49 -> "C-"
-        in 50..59 -> "C+"
-        in 60..69 -> "B-"
-        in 70..79 -> "B+"
-        in 80..89 -> "A"
-        in 90..100 -> "A+"
-        else -> "F"
-    }
-    print(whenUsageResult)
-    for (element in 1..10) {
-        println("I love Bangladesh $element times")
-    }
-
-    var bicycles = 0
-    while (bicycles < 50) {
-        bicycles++
-    }
-    println("$bicycles bicycles in the bicycle rack\n")
-    do {
-        bicycles--
-    } while (bicycles > 50)
-    println("$bicycles bicycles in the bicycle rack\n")
-
-
-    ///immutatable list listof
-    val cities = listOf("Dhaka", "Chittagong", "Rajshahi", "khulna")
-    println(cities.get(1))
-    println(cities.size)
-    for (city in cities) {
-        println(city)
-    }
-
-    val subCitiesList = cities.subList(fromIndex = 0, toIndex = 2)
-
-    //mutable list
-    val mutablecities = arrayListOf("Dhaka", "Chittagong", "Rajshahi", "khulna")
-    mutablecities.add("Sylhet")
-    mutablecities.add(0, "Barisal")
-    println(mutablecities)
-    //mutable list
-    val mutableArrayofcities = arrayOf("Dhaka", "Chittagong", "Rajshahi", "khulna")
-//    mutableArrayofcities.add("Sylhet")
-//    mutableArrayofcities.add(0, "Barisal")
-    mutableArrayofcities[0] = "Sylhet"
-    println(mutableArrayofcities[0])
-
-    val pets = arrayOf("dog", "cat", "canary")
-    for (element in pets) {
-        println(element + " ")
-    }
-    for (element in 1..10) {
-        println("i love Bangladesh $element times")
-    }
-    val instruments = listOf("trumpet", "piano", "violin")
-    println(instruments)
-//    printHello()
-//    println(printHellounit("anik"))
-//    printHelloArg("anik")
-    val sumResult = add2Number(5, 7)
-    add2Number2()
-    add2Number2(a = 32, b = 12)
-    add2Number2(b = 43, a = 12)
-    println(sumResult)
-    add2Numbercompact(a = 12, b = 89)
-
-
-    val k: Int = 10
-    val f: () -> Unit = {
-        println("i am anonymous")
-    }
-    val g: () -> String = {
-        "i am anonymous"
-    }
-    f()
-    f.invoke()
-    add2NumberWithAction(a = 10, b = 15, action = { a, b -> a + b })
-
-
-    repeat(5, {
-        println("Repeating $it times")
-    })
-    repeat(5) { count ->
-        println("Repeating $count times")
-    }
-
-
-    var r: Int? = null
-//    for null ponter Exception
-//    print(r!!.times(4))
-//    print(r?.times(4))
-    //answer is null
-    //elvis operator  ?:
-    print(r?.times(4)?:"Operand is Unassigned")
-    r = 10
-    println(r.times(6))
-
-
-    var i = 9
-    var sum = 10
-    do{
-        sum += 1
-        i++
-    }while(i <= 10)
-    println(sum)
-    for(i in 1..10) { if(i %2 == 0) print(i) }
+    val p1 = People(firstName = "Tanvir", lastName = "Ahmad")
+    p1.firstName = "syed"
+    println(p1.fullName)
 }
 
-fun printHello() {
-    println("hello World")
+
+class Student {
+    val firstName: String = "Mosfeq"
+    val lastName: String = "Anik"
+    fun getFullName() = "$firstName $lastName"
 }
 
-fun printHellounit(name: String?): String {
-    return "hi $String!"
+
+class Teacher {
+    val firstName: String
+    val lastName: String
+
+    init {
+        firstName = "tanvir"
+        lastName = "Ahmed"
+    }
+
+    fun getFullName() = "$firstName $lastName"
 }
 
-fun printHelloArg(name: String?) {
-    println("hi $String! Arg")
+class Employee(
+    val firstName: String,
+    val lastName: String
+) {
+    fun getFullName() = "$firstName $lastName"
 }
 
-fun add2Number(a: Int, b: Int): Int {
-    val sum = a + b
-    return sum
+class People(
+    var firstName: String,
+    val lastName: String
+) {
+    var fullName: String = ""
+        get() {
+            return "$firstName $lastName"
+        }
+        set(value) {
+            field = value
+        }
 }
 
-fun add2Number2(a: Int = 1, b: Int = 1) {
-    val sum = a + b
-    println(sum)
-}
-
-//compact function
-fun add2Numbercompact(a: Int = 1, b: Int = 1) = println(a + b)
-
-//Higher-order Functions take functions as parameters or return a function
-fun add2NumberWithAction(a: Int, b: Int, action: (Int, Int) -> Int) {
-    println(action(a, b))
-}
-//the body of the code calls the function that was passwed as the second argument and passes the first argument along to it.
-
-
-
-//Find the correct output for the following statements: var i = 9 var sum = 10 do{ sum += 1 i++ }while(i <= 10) print(sum)
-//12
-//If x > y and z > x, then
-//z is greater than y
-//Which keyword do you use to define a function in Kotlin?
-//var
-//Which syntax is correct for declaring a variable?
-// c) var x: String = “Hello”
-//Which keyword do you use to make a variable immutable?
-// a) val
-//Which operator does not belong to the Null Safety feature?
-//??
-//Which one is right?
-// a) Function arguments can be either named or default
-
-///---->You can assign default value for named arguments
-//Which one is a correct function signature?
-// d) fun something(String s) : String
-//Find the correct output for the following statements: for(i in 1..10) { if(i %2 == 0) print(i) }
-// b) 2,4,6,8,10
-
-//Which one is true?
-// b) To compare things, we use For Loop
+//class constructor example
