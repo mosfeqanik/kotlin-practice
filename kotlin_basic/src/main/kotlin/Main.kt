@@ -253,3 +253,9 @@ fun add2NumberWithAction(a: Int, b: Int, action: (Int, Int) -> Int) {
 
 //Which one is true?
 // b) To compare things, we use For Loop
+//
+//
+//
+//
+//
+//
